@@ -1,0 +1,17 @@
+apiVersion: k8s.cni.cncf.io/v1
+kind: NetworkAttachmentDefinition
+metadata:
+  name: nad-vlan23
+  namespace: openshift-cnv
+spec:
+  config: >-
+    {"name":"nad-br-cnv","cniVersion":"0.3.1","plugins":[{"type":"cnv-bridge","bridge":"br-cnv","vlan":23,"ipam":{}},{"type":"cnv-tuning"}]}
+---
+apiVersion: k8s.cni.cncf.io/v1
+kind: NetworkAttachmentDefinition
+metadata:
+  name: nad-vlan24
+  namespace: openshift-cnv
+spec:
+  config: >-
+    {"name":"nad-br-cnv","cniVersion":"0.3.1","plugins":[{"type":"cnv-bridge","bridge":"br-cnv","vlan":24,"ipam":{}},{"type":"cnv-tuning"}]}

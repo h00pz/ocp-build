@@ -1,0 +1,32 @@
+apiVersion: kubevirt.io/v1alpha3
+kind: VirtualMachine
+metadata:
+  name: vm1
+spec:
+  running: true
+  template:
+    spec:
+      domain:
+        devices:
+          disks:
+          - disk:
+              bus: virtio
+            name: containerdisk
+          interfaces:
+          - masquerade: {}
+            name: default
+          - bridge: {}
+            name: br10-100
+        resources:
+          requests:
+            memory: 64M
+      networks:
+      - name: default
+        pod: {}
+      - multus:
+          networkName: br10-100
+        name: br10-100
+      volumes:
+      - containerDisk:
+          image: kubevirt/cirros-container-disk-demo
+        name: containerdisk

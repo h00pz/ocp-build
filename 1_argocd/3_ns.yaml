@@ -1,0 +1,16 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  labels:
+    openshift.io/cluster-monitoring: "true"
+  name: openshift-storage
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: openshift-cnv
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: open-cluster-management

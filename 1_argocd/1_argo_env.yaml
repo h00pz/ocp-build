@@ -1,0 +1,98 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: argocd
+---
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: argocd
+  namespace: argocd
+spec:
+  targetNamespaces:
+    - argocd
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: "argocd-operator"
+  namespace: "argocd"
+  olm.operatorGroup: argocd
+spec:
+  channel: "alpha"
+  installPlanApproval: "Automatic"
+  source: "community-operators"
+  sourceNamespace: "openshift-marketplace"
+  name: "argocd-operator"
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: "prometheus"
+  namespace: "argocd"
+  olm.operatorGroup: argocd
+spec:
+  channel: "beta"
+  installPlanApproval: "Automatic"
+  source: "community-operators"
+  sourceNamespace: "openshift-marketplace"
+  name: "prometheus"
+---
+kind: Group
+apiVersion: user.openshift.io/v1
+metadata:
+  name: argocd-users
+users: null
+---
+kind: Group
+apiVersion: user.openshift.io/v1
+metadata:
+  name: argocd-admins
+users:
+  - mh@h00pz.co
+---
+kind: Group
+apiVersion: user.openshift.io/v1
+metadata:
+  name: devteam1
+users:
+  - developer1
+  - developer2
+---
+kind: Group
+apiVersion: user.openshift.io/v1
+metadata:
+  name: devteam2
+users:
+  - developer3
+  - developer4
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ArgoCD
+metadata:
+  name: argocd-prj-cluster
+  namespace: argocd
+spec:
+  applicationInstanceLabelKey: h00pz.co/argoappname
+  dex:
+    openShiftOAuth: true
+  rbac:
+    defaultPolicy: 'role:readonly'
+    policy: |
+      g, system:cluster-admins, role:admin
+      g, argocd-users, role:readonly
+      g, argocd-admins, role:admin
+    scopes: '[groups]'
+  repositories: |
+    - url: https://github.com/h00pz/ocp-build.git
+  grafana:
+    enabled: true
+    route:
+      enabled: true
+  prometheus:
+    enabled: true
+    route:
+      enabled: true
+  server:
+    route:
+      enabled: true

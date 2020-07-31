@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ArgoCD
+metadata:
+  name: cluster-mgmt
+  namespace: argocd
+spec:
+  applicationInstanceLabelKey: h00pz.co/argoappname
+  dex:
+    openShiftOAuth: true
+  rbac:
+    defaultPolicy: 'role:readonly'
+    policy: |
+      g, system:cluster-admins, role:admin
+      g, argocd-users, role:readonly
+      g, argocd-admins, role:admin
+    scopes: '[groups]'
+  repositories: |
+    - url: https://github.com/h00pz/ocp-build.git
+  grafana:
+    enabled: true
+    route:
+      enabled: true
+  prometheus:
+    enabled: true
+    route:
+      enabled: true
+  server:
+    route:
+      enabled: true

@@ -1,0 +1,75 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: cluster-build
+  namespace: argocd
+spec:
+  description: Lab Cluster
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  destinations:
+    - namespace: '*'
+      server: '*'
+  sourceRepos:
+  - https://github.com/h00pz/build-ocp.git
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: local-storage
+  namespace: openshift-storage
+spec:
+  destination:
+    namespace: openshift-storage
+    server: 'https://kubernetes.default.svc'
+  project: cluster-build
+  source:
+    path: 2_apps/storage/local-storage
+    repoURL: https://github.com/h00pz/ocp-build.git
+    targetRevision: HEAD
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ocs
+  namespace: openshift-storage
+spec:
+  destination:
+    namespace: openshift-storage
+    server: 'https://kubernetes.default.svc'
+  project: cluster-build
+  source:
+    path: 2_apps/storage/ocs
+    repoURL: https://github.com/h00pz/ocp-build.git
+    targetRevision: HEAD
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cnv
+  namespace: openshift-cnv
+spec:
+  destination:
+    namespace: openshift-cnv
+    server: 'https://kubernetes.default.svc'
+  project: cluster-build
+  source:
+    path: 2_apps/cnv
+    repoURL: https://github.com/h00pz/ocp-build.git
+    targetRevision: HEAD
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: acm
+  namespace: open-cluster-management
+spec:
+  destination:
+    namespace: open-cluster-management
+    server: 'https://kubernetes.default.svc'
+  project: cluster-build
+  source:
+    path: 2_apps/acm
+    repoURL: https://github.com/h00pz/ocp-build.git
+    targetRevision: HEAD

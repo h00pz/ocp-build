@@ -1,0 +1,24 @@
+apiVersion: nmstate.io/v1alpha1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: nncp-br-ncv
+spec:
+  nodeSelector: 
+    node-role.kubernetes.io/worker: "" 
+  desiredState:
+    interfaces:
+      - name: br-ncv
+        description: Linux bridge with eno1 as a port 
+        type: linux-bridge
+        state: up
+        bridge:
+          options:
+            stp:
+              enabled: false
+          port:
+            - name: eno2
+    routes:
+      config:
+      - destination: 0.0.0.0/0        
+        next-hop-address: 172.30.22.1
+        next-hop-interface: enp8s0
