@@ -4,7 +4,7 @@ metadata:
   name: awss3-operator-registry-alpha-community-operators-openshift-marketplace
   namespace: openshift-storage
 spec:
-  channel: alpha
+  channel: 1.0.1
   installPlanApproval: Automatic
   name: awss3-operator-registry
   source: community-operators

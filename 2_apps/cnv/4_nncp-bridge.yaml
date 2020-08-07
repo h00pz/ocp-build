@@ -1,7 +1,7 @@
 apiVersion: nmstate.io/v1alpha1
 kind: NodeNetworkConfigurationPolicy
 metadata:
-  name: nncp-br-ncv
+  name: nncp-br-cnv
 spec:
   nodeSelector: 
     node-role.kubernetes.io/worker: "" 

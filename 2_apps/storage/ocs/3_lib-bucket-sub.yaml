@@ -4,7 +4,7 @@ metadata:
   name: lib-bucket-provisioner-alpha-community-operators-openshift-marketplace
   namespace: openshift-storage
 spec:
-  channel: alpha
+  channel: 2.0.0
   installPlanApproval: Automatic
   name: lib-bucket-provisioner
   source: community-operators
