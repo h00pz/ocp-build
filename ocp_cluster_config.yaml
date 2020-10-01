@@ -1,0 +1,8 @@
+---
+## setup ipmi properly on hardware
+- hosts: all
+  roles:
+    - argocd
+    - storage
+
+

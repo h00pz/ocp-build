@@ -1,0 +1,15 @@
+---
+- name: copy files 
+  copy:
+    src: "{{ item }}"
+    dest: /root/
+    mode: 0644
+  with_items:
+    - 
+    - mh.yaml
+    - oauth.yaml
+  when: "'ocp-mgmt' in group_names"
+
+- name: setup oauth on cluster
+  command: oc create -f /root/oauth.yaml
+  when: "'ocp-mgmt' in group_names"
