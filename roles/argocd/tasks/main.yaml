@@ -5,11 +5,34 @@
     dest: /root/
     mode: 0644
   with_items:
-    - 
-    - mh.yaml
-    - oauth.yaml
+    - 1_argo_env.yaml
+    - 2_argocd.yaml
+    - 3_ns.yaml
+    - 4_argocd_cluster_admin.yaml
+    - 5_permissions.yaml
+    - 6_project.yaml
   when: "'ocp-mgmt' in group_names"
 
-- name: setup oauth on cluster
-  command: oc create -f /root/oauth.yaml
+- name: setup ArgoCD env
+  command: oc apply -f /root/1_argo_env.yaml
+  when: "'ocp-mgmt' in group_names"
+
+- name: setup ArgoCD  
+  command: oc apply -f /root/2_argocd.yaml
+  when: "'ocp-mgmt' in group_names"
+ 
+- name: setup namespaces
+  command: oc apply -f /root/3_ns.yaml
+  when: "'ocp-mgmt' in group_names"
+
+- name: setup ArgoCD and other needed things 
+  command: oc create  -f /root/4_argocd_cluster_admin.yaml
+  when: "'ocp-mgmt' in group_names"
+
+- name: setup ArgoCD and other needed things 
+  command: oc apply -f /root/4_permissions.yaml
+  when: "'ocp-mgmt' in group_names"
+
+- name: setup ArgoCD project
+  command: oc apply -f /root/5_project.yaml
   when: "'ocp-mgmt' in group_names"
