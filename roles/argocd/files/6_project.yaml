@@ -73,3 +73,21 @@ spec:
     path: acm
     repoURL: https://github.com/h00pz/ocp-build.git
     targetRevision: HEAD
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: metering
+  namespace: argocd
+spec:
+  destination:
+    namespace: openshift-meteringt
+    server: 'https://kubernetes.default.svc'
+  project: cluster-build
+  source:
+    path: metering
+    repoURL: https://github.com/h00pz/ocp-build.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      selfHeal: true

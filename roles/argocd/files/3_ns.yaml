@@ -14,3 +14,10 @@ kind: Namespace
 apiVersion: v1
 metadata:
   name: open-cluster-management
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: openshift-metering
+  labels:
+    openshift.io/cluster-monitoring: "true"
