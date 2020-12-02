@@ -18,7 +18,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: local-storage
-  namespace: openshift-storage
+  namespace: argocd
 spec:
   destination:
     namespace: openshift-storage
@@ -33,7 +33,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: ocs
-  namespace: openshift-storage
+  namespace: argocd
 spec:
   destination:
     namespace: openshift-storage
@@ -48,7 +48,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: cnv
-  namespace: openshift-cnv
+  namespace: argocd
 spec:
   destination:
     namespace: openshift-cnv
@@ -63,7 +63,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: acm
-  namespace: open-cluster-management
+  namespace: argocd
 spec:
   destination:
     namespace: open-cluster-management
