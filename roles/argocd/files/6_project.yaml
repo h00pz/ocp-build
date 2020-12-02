@@ -12,7 +12,7 @@ spec:
     - namespace: '*'
       server: '*'
   sourceRepos:
-  - https://github.com/h00pz/build-ocp.git
+  - '*'
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application

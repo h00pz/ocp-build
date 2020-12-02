@@ -25,11 +25,11 @@
   command: oc apply -f /root/3_ns.yaml
   when: "'ocp-mgmt' in group_names"
 
-- name: setup ArgoCD and other needed things 
+- name: setup ArgoCD cluster admin
   command: oc create  -f /root/4_argocd_cluster_admin.yaml
   when: "'ocp-mgmt' in group_names"
 
-- name: setup ArgoCD and other needed things 
+- name: setup ArgoCD RoleBindings
   command: oc apply -f /root/4_permissions.yaml
   when: "'ocp-mgmt' in group_names"
 

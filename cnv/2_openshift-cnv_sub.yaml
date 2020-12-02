@@ -9,4 +9,4 @@ spec:
   name: kubevirt-hyperconverged
   source: redhat-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: kubevirt-hyperconverged-operator.v2.4.0
+  startingCSV: kubevirt-hyperconverged-operator.v2.4.1
