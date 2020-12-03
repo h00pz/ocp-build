@@ -91,3 +91,23 @@ spec:
   syncPolicy:
     automated:
       selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: openshift-service-mesh
+  namespace: argocd
+spec:
+  destination:
+    namespace: istio-system
+    server: 'https://kubernetes.default.svc'
+  ignoreDifferences:
+  - group: maistra.io
+    jsonPointers:
+    - /spec/members
+    kind: ServiceMeshMemberRoll
+  project: demolab
+  source:
+    path: servicemesh
+    repoURL: https://github.com/h00pz/ocp-build.git
+    targetRevision: HEAD
