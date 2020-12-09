@@ -2,7 +2,7 @@
 ## setup ipmi properly on hardware
 - hosts: all
   roles:
-    - argocd
+    - acm
     - storage
 
 

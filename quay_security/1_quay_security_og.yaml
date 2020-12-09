@@ -1,0 +1,11 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: ClusterServiceVersion
+metadata:
+  name: container-security-operator.v3.3.1
+  namespace: openshift-operators
+spec:
+  displayName: Quay Container Security
+  provider:
+    name: Red Hat
+  maturity: alpha
+  version: 3.3.1
