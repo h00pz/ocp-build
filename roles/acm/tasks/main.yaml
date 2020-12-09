@@ -17,13 +17,13 @@
     - 4_acm_multi_cluster_hub.yaml
 
 - name: Create ACM Namespace
-  command: oc apply -f {{ temp_folder }}/1_argo_env.yaml
+  command: oc create -f {{ temp_folder }}/1_argo_env.yaml
 
 - name: Create ACM Operators Group
-  command: oc create  -f {{ temp_folder }}/2_acm_og.yaml
+  command: oc create -f {{ temp_folder }}/2_acm_og.yaml
 
 - name: Setup ACM Subscription
-  command: oc create  -f {{ temp_folder }}/3_acm_sub.yaml
+  command: oc apply -f {{ temp_folder }}/3_acm_sub.yaml
 
 - name: Setup ACM Multi Cluster Hub
-  command: oc create  -f {{ temp_folder }}/4_multi_cluster_hub.yaml
+  command: oc apply -f {{ temp_folder }}/4_multi_cluster_hub.yaml
