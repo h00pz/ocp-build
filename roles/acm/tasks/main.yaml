@@ -8,7 +8,7 @@
 - name: Copy ACM files to temp_folder
   copy:
     src: "{{ item }}"
-    dest: "{{ temp_folder }}"
+    dest: "{{ temp_folder }}/"
     mode: 0644
   with_items:
     - 1_acm_ns.yaml
@@ -24,6 +24,10 @@
 
 - name: Setup ACM Subscription
   command: oc apply -f {{ temp_folder }}/3_acm_sub.yaml
+
+- name: ACM pause for allowing the subscription to be installed
+  pause:
+    minutes: 1
 
 - name: Setup ACM Multi Cluster Hub
   command: oc apply -f {{ temp_folder }}/4_multi_cluster_hub.yaml
