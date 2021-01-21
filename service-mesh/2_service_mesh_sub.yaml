@@ -3,9 +3,12 @@ kind: Subscription
 metadata:
   name: servicemeshoperator
   namespace: openshift-operators
+  labels:
+    operators.coreos.com/servicemeshoperator.openshift-operators: ''
 spec:
   channel: stable
   installPlanApproval: Automatic
   name: servicemeshoperator
   source: redhat-operators
   sourceNamespace: openshift-marketplace
+  startingCSV: servicemeshoperator.v2.0.1.1
