@@ -7,7 +7,7 @@ spec:
     node-role.kubernetes.io/worker: "" 
   desiredState:
     interfaces:
-      - name: br-ncv
+      - name: br-cnv
         description: Linux bridge with eno1 as a port 
         type: linux-bridge
         state: up
@@ -16,7 +16,7 @@ spec:
             stp:
               enabled: false
           port:
-            - name: eno2
+            - name: eno1
     routes:
       config:
       - destination: 0.0.0.0/0        
