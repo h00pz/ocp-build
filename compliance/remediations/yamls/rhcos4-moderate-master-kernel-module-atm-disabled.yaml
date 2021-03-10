@@ -1,0 +1,92 @@
+apiVersion: compliance.openshift.io/v1alpha1
+kind: ComplianceRemediation
+metadata:
+  creationTimestamp: "2021-03-10T16:00:16Z"
+  generation: 3
+  labels:
+    compliance.openshift.io/scan-name: rhcos4-moderate-master
+    compliance.openshift.io/suite: nist-moderate
+  managedFields:
+  - apiVersion: compliance.openshift.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:compliance.openshift.io/scan-name: {}
+          f:compliance.openshift.io/suite: {}
+        f:ownerReferences:
+          .: {}
+          k:{"uid":"b5cab10b-7ab4-42f2-ad70-7537ff9731e8"}:
+            .: {}
+            f:apiVersion: {}
+            f:blockOwnerDeletion: {}
+            f:controller: {}
+            f:kind: {}
+            f:name: {}
+            f:uid: {}
+      f:spec:
+        .: {}
+        f:current:
+          .: {}
+          f:object:
+            .: {}
+            f:apiVersion: {}
+            f:kind: {}
+            f:spec:
+              .: {}
+              f:config:
+                .: {}
+                f:ignition:
+                  .: {}
+                  f:version: {}
+                f:storage:
+                  .: {}
+                  f:files: {}
+        f:outdated: {}
+      f:status:
+        .: {}
+        f:applicationState: {}
+    manager: compliance-operator
+    operation: Update
+    time: "2021-03-10T22:02:27Z"
+  - apiVersion: compliance.openshift.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:apply: {}
+    manager: oc
+    operation: Update
+    time: "2021-03-10T22:02:27Z"
+  name: rhcos4-moderate-master-kernel-module-atm-disabled
+  namespace: openshift-compliance
+  ownerReferences:
+  - apiVersion: compliance.openshift.io/v1alpha1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ComplianceCheckResult
+    name: rhcos4-moderate-master-kernel-module-atm-disabled
+    uid: b5cab10b-7ab4-42f2-ad70-7537ff9731e8
+  resourceVersion: "1000237"
+  selfLink: /apis/compliance.openshift.io/v1alpha1/namespaces/openshift-compliance/complianceremediations/rhcos4-moderate-master-kernel-module-atm-disabled
+  uid: 272279d1-6a1b-42ba-b54f-06466b4931c4
+spec:
+  apply: false
+  current:
+    object:
+      apiVersion: machineconfiguration.openshift.io/v1
+      kind: MachineConfig
+      spec:
+        config:
+          ignition:
+            version: 3.1.0
+          storage:
+            files:
+            - contents:
+                source: data:,install%20atm%20/bin/true%0A
+              mode: 420
+              overwrite: true
+              path: /etc/modprobe.d/75-kernel_module_atm_disabled.conf
+  outdated: {}
+status:
+  applicationState: NotApplied

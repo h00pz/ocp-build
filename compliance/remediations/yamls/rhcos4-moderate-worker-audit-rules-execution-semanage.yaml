@@ -1,0 +1,92 @@
+apiVersion: compliance.openshift.io/v1alpha1
+kind: ComplianceRemediation
+metadata:
+  creationTimestamp: "2021-03-10T16:00:37Z"
+  generation: 3
+  labels:
+    compliance.openshift.io/scan-name: rhcos4-moderate-worker
+    compliance.openshift.io/suite: nist-moderate
+  managedFields:
+  - apiVersion: compliance.openshift.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:compliance.openshift.io/scan-name: {}
+          f:compliance.openshift.io/suite: {}
+        f:ownerReferences:
+          .: {}
+          k:{"uid":"e8988869-a03d-480f-9c60-c4d1f90b2d38"}:
+            .: {}
+            f:apiVersion: {}
+            f:blockOwnerDeletion: {}
+            f:controller: {}
+            f:kind: {}
+            f:name: {}
+            f:uid: {}
+      f:spec:
+        .: {}
+        f:current:
+          .: {}
+          f:object:
+            .: {}
+            f:apiVersion: {}
+            f:kind: {}
+            f:spec:
+              .: {}
+              f:config:
+                .: {}
+                f:ignition:
+                  .: {}
+                  f:version: {}
+                f:storage:
+                  .: {}
+                  f:files: {}
+        f:outdated: {}
+      f:status:
+        .: {}
+        f:applicationState: {}
+    manager: compliance-operator
+    operation: Update
+    time: "2021-03-10T22:02:40Z"
+  - apiVersion: compliance.openshift.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:apply: {}
+    manager: oc
+    operation: Update
+    time: "2021-03-10T22:02:40Z"
+  name: rhcos4-moderate-worker-audit-rules-execution-semanage
+  namespace: openshift-compliance
+  ownerReferences:
+  - apiVersion: compliance.openshift.io/v1alpha1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ComplianceCheckResult
+    name: rhcos4-moderate-worker-audit-rules-execution-semanage
+    uid: e8988869-a03d-480f-9c60-c4d1f90b2d38
+  resourceVersion: "1000644"
+  selfLink: /apis/compliance.openshift.io/v1alpha1/namespaces/openshift-compliance/complianceremediations/rhcos4-moderate-worker-audit-rules-execution-semanage
+  uid: a3330c31-57c0-464f-8b3a-73b37f2f7d45
+spec:
+  apply: false
+  current:
+    object:
+      apiVersion: machineconfiguration.openshift.io/v1
+      kind: MachineConfig
+      spec:
+        config:
+          ignition:
+            version: 3.1.0
+          storage:
+            files:
+            - contents:
+                source: data:,-a%20always%2Cexit%20-F%20path%3D/usr/sbin/semanage%20-F%20auid%3E%3D1000%20-F%20auid%21%3Dunset%20-F%20key%3Dprivileged%0A
+              mode: 420
+              overwrite: true
+              path: /etc/audit/rules.d/75-usr_sbin_semanage_execution.rules
+  outdated: {}
+status:
+  applicationState: NotApplied

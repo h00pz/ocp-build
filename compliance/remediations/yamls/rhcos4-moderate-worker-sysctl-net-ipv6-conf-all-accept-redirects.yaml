@@ -1,0 +1,92 @@
+apiVersion: compliance.openshift.io/v1alpha1
+kind: ComplianceRemediation
+metadata:
+  creationTimestamp: "2021-03-10T16:00:32Z"
+  generation: 3
+  labels:
+    compliance.openshift.io/scan-name: rhcos4-moderate-worker
+    compliance.openshift.io/suite: nist-moderate
+  managedFields:
+  - apiVersion: compliance.openshift.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:compliance.openshift.io/scan-name: {}
+          f:compliance.openshift.io/suite: {}
+        f:ownerReferences:
+          .: {}
+          k:{"uid":"8f74e349-8b67-4f49-99fc-3f1a4564def0"}:
+            .: {}
+            f:apiVersion: {}
+            f:blockOwnerDeletion: {}
+            f:controller: {}
+            f:kind: {}
+            f:name: {}
+            f:uid: {}
+      f:spec:
+        .: {}
+        f:current:
+          .: {}
+          f:object:
+            .: {}
+            f:apiVersion: {}
+            f:kind: {}
+            f:spec:
+              .: {}
+              f:config:
+                .: {}
+                f:ignition:
+                  .: {}
+                  f:version: {}
+                f:storage:
+                  .: {}
+                  f:files: {}
+        f:outdated: {}
+      f:status:
+        .: {}
+        f:applicationState: {}
+    manager: compliance-operator
+    operation: Update
+    time: "2021-03-10T22:02:56Z"
+  - apiVersion: compliance.openshift.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:apply: {}
+    manager: oc
+    operation: Update
+    time: "2021-03-10T22:02:56Z"
+  name: rhcos4-moderate-worker-sysctl-net-ipv6-conf-all-accept-redirects
+  namespace: openshift-compliance
+  ownerReferences:
+  - apiVersion: compliance.openshift.io/v1alpha1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ComplianceCheckResult
+    name: rhcos4-moderate-worker-sysctl-net-ipv6-conf-all-accept-redirects
+    uid: 8f74e349-8b67-4f49-99fc-3f1a4564def0
+  resourceVersion: "1001213"
+  selfLink: /apis/compliance.openshift.io/v1alpha1/namespaces/openshift-compliance/complianceremediations/rhcos4-moderate-worker-sysctl-net-ipv6-conf-all-accept-redirects
+  uid: 09ac0ef5-3ab0-4d56-a74f-27b1f0f91a22
+spec:
+  apply: false
+  current:
+    object:
+      apiVersion: machineconfiguration.openshift.io/v1
+      kind: MachineConfig
+      spec:
+        config:
+          ignition:
+            version: 3.1.0
+          storage:
+            files:
+            - contents:
+                source: data:,net.ipv6.conf.all.accept_redirects%3D0%0A
+              mode: 420
+              overwrite: true
+              path: /etc/sysctl.d/75-sysctl_net_ipv6_conf_all_accept_redirects.conf
+  outdated: {}
+status:
+  applicationState: NotApplied

@@ -1,0 +1,92 @@
+apiVersion: compliance.openshift.io/v1alpha1
+kind: ComplianceRemediation
+metadata:
+  creationTimestamp: "2021-03-10T16:00:21Z"
+  generation: 3
+  labels:
+    compliance.openshift.io/scan-name: rhcos4-moderate-master
+    compliance.openshift.io/suite: nist-moderate
+  managedFields:
+  - apiVersion: compliance.openshift.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:compliance.openshift.io/scan-name: {}
+          f:compliance.openshift.io/suite: {}
+        f:ownerReferences:
+          .: {}
+          k:{"uid":"1c6fa776-f0d9-4e92-95d8-6b4439a02c3d"}:
+            .: {}
+            f:apiVersion: {}
+            f:blockOwnerDeletion: {}
+            f:controller: {}
+            f:kind: {}
+            f:name: {}
+            f:uid: {}
+      f:spec:
+        .: {}
+        f:current:
+          .: {}
+          f:object:
+            .: {}
+            f:apiVersion: {}
+            f:kind: {}
+            f:spec:
+              .: {}
+              f:config:
+                .: {}
+                f:ignition:
+                  .: {}
+                  f:version: {}
+                f:storage:
+                  .: {}
+                  f:files: {}
+        f:outdated: {}
+      f:status:
+        .: {}
+        f:applicationState: {}
+    manager: compliance-operator
+    operation: Update
+    time: "2021-03-10T22:02:30Z"
+  - apiVersion: compliance.openshift.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:apply: {}
+    manager: oc
+    operation: Update
+    time: "2021-03-10T22:02:30Z"
+  name: rhcos4-moderate-master-no-direct-root-logins
+  namespace: openshift-compliance
+  ownerReferences:
+  - apiVersion: compliance.openshift.io/v1alpha1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ComplianceCheckResult
+    name: rhcos4-moderate-master-no-direct-root-logins
+    uid: 1c6fa776-f0d9-4e92-95d8-6b4439a02c3d
+  resourceVersion: "1000339"
+  selfLink: /apis/compliance.openshift.io/v1alpha1/namespaces/openshift-compliance/complianceremediations/rhcos4-moderate-master-no-direct-root-logins
+  uid: 34cc910d-2ff1-4ad8-b491-5b8c3cf5cccf
+spec:
+  apply: false
+  current:
+    object:
+      apiVersion: machineconfiguration.openshift.io/v1
+      kind: MachineConfig
+      spec:
+        config:
+          ignition:
+            version: 3.1.0
+          storage:
+            files:
+            - contents:
+                source: data:,
+              mode: 384
+              overwrite: true
+              path: /etc/securetty
+  outdated: {}
+status:
+  applicationState: NotApplied

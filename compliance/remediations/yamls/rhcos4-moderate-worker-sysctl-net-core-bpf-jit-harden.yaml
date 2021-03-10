@@ -1,0 +1,92 @@
+apiVersion: compliance.openshift.io/v1alpha1
+kind: ComplianceRemediation
+metadata:
+  creationTimestamp: "2021-03-10T16:00:37Z"
+  generation: 3
+  labels:
+    compliance.openshift.io/scan-name: rhcos4-moderate-worker
+    compliance.openshift.io/suite: nist-moderate
+  managedFields:
+  - apiVersion: compliance.openshift.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:compliance.openshift.io/scan-name: {}
+          f:compliance.openshift.io/suite: {}
+        f:ownerReferences:
+          .: {}
+          k:{"uid":"88c08830-cc18-4920-bfc2-2f0c797017b6"}:
+            .: {}
+            f:apiVersion: {}
+            f:blockOwnerDeletion: {}
+            f:controller: {}
+            f:kind: {}
+            f:name: {}
+            f:uid: {}
+      f:spec:
+        .: {}
+        f:current:
+          .: {}
+          f:object:
+            .: {}
+            f:apiVersion: {}
+            f:kind: {}
+            f:spec:
+              .: {}
+              f:config:
+                .: {}
+                f:ignition:
+                  .: {}
+                  f:version: {}
+                f:storage:
+                  .: {}
+                  f:files: {}
+        f:outdated: {}
+      f:status:
+        .: {}
+        f:applicationState: {}
+    manager: compliance-operator
+    operation: Update
+    time: "2021-03-10T22:02:53Z"
+  - apiVersion: compliance.openshift.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:apply: {}
+    manager: oc
+    operation: Update
+    time: "2021-03-10T22:02:53Z"
+  name: rhcos4-moderate-worker-sysctl-net-core-bpf-jit-harden
+  namespace: openshift-compliance
+  ownerReferences:
+  - apiVersion: compliance.openshift.io/v1alpha1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ComplianceCheckResult
+    name: rhcos4-moderate-worker-sysctl-net-core-bpf-jit-harden
+    uid: 88c08830-cc18-4920-bfc2-2f0c797017b6
+  resourceVersion: "1001095"
+  selfLink: /apis/compliance.openshift.io/v1alpha1/namespaces/openshift-compliance/complianceremediations/rhcos4-moderate-worker-sysctl-net-core-bpf-jit-harden
+  uid: 45496702-07d3-462b-9705-846a03c2c941
+spec:
+  apply: false
+  current:
+    object:
+      apiVersion: machineconfiguration.openshift.io/v1
+      kind: MachineConfig
+      spec:
+        config:
+          ignition:
+            version: 3.1.0
+          storage:
+            files:
+            - contents:
+                source: data:,net.core.bpf_jit_harden%3D2%0A
+              mode: 420
+              overwrite: true
+              path: /etc/sysctl.d/75-sysctl_net_core_bpf_jit_harden.conf
+  outdated: {}
+status:
+  applicationState: NotApplied
