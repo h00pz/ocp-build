@@ -1,7 +1,7 @@
 apiVersion: compliance.openshift.io/v1alpha1
 kind: ScanSettingBinding
 metadata:
-  name: nist-moderate
+  name: bob-your-uncle
 profiles:
   - name: rhcos4-moderate
     kind: Profile
