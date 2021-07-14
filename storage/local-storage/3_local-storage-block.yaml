@@ -3,7 +3,7 @@ kind: LocalVolume
 metadata:
   name: localblock
   labels: {}
-  namespace: openshift-storage
+   namespace: openshift-local-storage
 spec:
   storageClassDevices:
     - devicePaths:
