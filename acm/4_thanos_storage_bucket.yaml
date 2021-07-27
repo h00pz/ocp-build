@@ -1,12 +1,12 @@
 apiVersion: objectbucket.io/v1alpha1
 kind: ObjectBucketClaim
 metadata:
-  name: thanos-object-storage
+  name: thanos-storage-object-bucket-claim
   namespace: open-cluster-management-observability
   labels:
     bucket-provisioner: openshift-storage.ceph.rook.io-bucket
 spec:
-  bucketName: thanos-object-storage-bucket
+  bucketName: thanos-object-storage
   generateBucketName: thanos-object-storage
-  objectBucketName: obc-open-cluster-management-observability-thanos-object-storage
+  objectBucketName: thanos-object-storage
   storageClassName: ocs-storagecluster-ceph-rgw
