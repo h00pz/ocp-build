@@ -1,9 +1,7 @@
-apiVersion: config.openshift.io/v1
-kind: ClusterOperator
+apiVersion: imageregistry.operator.openshift.io/v1
+kind: Config
 metadata:
-  name: image-registry
+  name: cluster
 spec:
   managementState: Managed
-  defaultRoute: true
-  storage:
-    emptyDir: {}
+  storage: {}

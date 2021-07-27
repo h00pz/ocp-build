@@ -17,8 +17,3 @@ spec:
               enabled: false
           port:
             - name: eno1
-    routes:
-      config:
-      - destination: 0.0.0.0/0        
-        next-hop-address: 172.30.22.1
-        next-hop-interface: enp8s0

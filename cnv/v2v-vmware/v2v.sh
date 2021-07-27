@@ -7,4 +7,4 @@ podman login -u kubeadmin -p $(oc whoami -t) default-route-openshift-image-regis
 podman build -t default-route-openshift-image-registry.apps.c1.h00pz.co/openshift-cnv/vddk .
 podman push default-route-openshift-image-registry.apps.c1.h00pz.co/openshift-cnv/vddk
 
-oc patch cm v2v-vmware -n openshift-cnv --type merge --patch '{"data":{"vddk-init-image":"image-registry.openshift-image-registry.svc:5000/openshift-cnv/vddk@sha256:a0a87f6ceb7e62c1c23f760c53e82cf1ec3fef4a40bb8cf453400c9265e40bfe"}}'
+oc patch cm v2v-vmware -n openshift-cnv --type merge --patch '{"data":{"vddk-init-image":"image-registry.openshift-image-registry.svc:5000/openshift-cnv/vddk@sha256:9810d0631d68eabb2636dd21d4560c3caccb97721a73b63284f39b6a85934eaf"}}'
