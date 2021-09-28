@@ -4,4 +4,6 @@ metadata:
   name: cluster
 spec:
   managementState: Managed
-  storage: {}
+  storage:
+    pvc:
+      claim:
