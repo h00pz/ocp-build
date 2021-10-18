@@ -1,0 +1,26 @@
+apiVersion: automationcontroller.ansible.com/v1beta1
+kind: AutomationController
+metadata:
+  labels:
+    app.kubernetes.io/component: automationcontroller
+    app.kubernetes.io/managed-by: automationcontroller-operator
+    app.kubernetes.io/name: controller1
+    app.kubernetes.io/operator-version: 2.0.1
+    app.kubernetes.io/part-of: controller1
+  name: controller1
+  namespace: ansible-automation-platform
+spec:
+  create_preload_data: true
+  route_tls_termination_mechanism: Edge
+  garbage_collect_secrets: true
+  service_type: ClusterIP
+  ingress_type: Route
+  admin_password_secret: tower-admin-password
+  projects_use_existing_claim: _Yes_
+  image_pull_policy: IfNotPresent
+  admin_email: mh@h00pz.co
+  task_privileged: false
+  projects_existing_claim: ansible-projects-pvc
+  projects_persistence: true
+  replicas: 1
+  admin_user: admin

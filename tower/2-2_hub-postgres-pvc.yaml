@@ -1,0 +1,13 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: postgres-hub1-postgres-0
+  namespace: ansible-automation-platform
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: ocs-storagecluster-cephfs
+  volumeMode: Filesystem

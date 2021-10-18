@@ -1,10 +1,10 @@
-apiVersion: observability.open-cluster-management.io/v1beta1
+apiVersion: observability.open-cluster-management.io/v1beta2
 kind: MultiClusterObservability
 metadata:
   name: observability
   namespace: open-cluster-management
 spec:
-  availabilityConfig: High
+  availabilityConfig: basic
   imagePullPolicy: Always
   imagePullSecret: multiclusterhub-operator-pull-secret
   observabilityAddonSpec:
@@ -18,4 +18,4 @@ spec:
       key: thanos.yaml
       name: thanos-object-storage
     statefulSetSize: 50Gi
-    statefulSetStorageClass: ocs-storagecluster-ceph-rbd
+    statefulSetStorageClass: thin

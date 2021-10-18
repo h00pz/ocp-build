@@ -4,7 +4,7 @@ metadata:
   name: thanos-storage-object-bucket-claim
   namespace: open-cluster-management-observability
   labels:
-    bucket-provisioner: openshift-storage.ceph.rook.io-bucket
+    bucket-provisioner: openshift-storage.noobaa.io
 spec:
   bucketName: thanos-object-storage
   generateBucketName: thanos-object-storage
