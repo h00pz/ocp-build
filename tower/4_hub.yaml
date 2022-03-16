@@ -10,13 +10,13 @@ spec:
   admin_password_secret: tower-admin-password
   file_storage_size: 100Gi
   image_pull_policy: IfNotPresent
-  file_storage_storage_class: ocs-storagecluster-cephfs
+  file_storage_storage_class: thin
   web:
     replicas: 1
   file_storage_access_mode: ReadWriteMany
   content:
     log_level: INFO
-    replicas: 2
+    replicas: 1
   api:
     log_level: INFO
     replicas: 1
@@ -25,4 +25,4 @@ spec:
     replicas: 1
   storage_type: File
   worker:
-    replicas: 2
+    replicas: 1
