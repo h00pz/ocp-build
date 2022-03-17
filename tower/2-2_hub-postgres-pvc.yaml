@@ -9,5 +9,5 @@ spec:
   resources:
     requests:
       storage: 10Gi
-  storageClassName: nfs-csi
+  storageClassName: ocs-storagecluster-cephfs
   volumeMode: Filesystem
