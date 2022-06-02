@@ -9,4 +9,4 @@ spec:
   bucketName: thanos-object-storage
   generateBucketName: thanos-object-storage
   objectBucketName: thanos-object-storage
-  storageClassName: ocs-storagecluster-ceph-rgw
+  storageClassName: openshift-storage.noobaa.io
