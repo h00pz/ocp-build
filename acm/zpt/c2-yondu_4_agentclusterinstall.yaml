@@ -1,0 +1,25 @@
+apiVersion: extensions.hive.openshift.io/v1beta1
+kind: AgentClusterInstall
+metadata:
+  # Only include the annotation if using OVN, otherwise omit the annotation
+  annotations:
+    agent-install.openshift.io/install-config-overrides: '{"networking":{"networkType":"OVNKubernetes"}}'
+  name: c2
+  namespace: c2
+spec:
+  clusterDeploymentRef:
+    name: c2
+  imageSetRef:
+    name: img4.11.9-x86-64-appsub
+  networking:
+    clusterNetwork:
+    - cidr: 172.23.0.0/17
+      hostPrefix: 23
+    machineNetwork:
+    - cidr: 172.30.22.0/24
+    serviceNetwork:
+    - 172.23.128.0/17
+  provisionRequirements:
+    controlPlaneAgents: 1
+    workerAgents: 0
+  sshPublicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC3j+Zh34pPxL4gJIq30sKtT5ISfViOn+wTwvf7EzGGVO/q5zWPq5hlabDOtLcutZ09iCFaF8C8JGx7yVtG1bqNTxJr3XpArpJVeAzpASq0bf81QmBBk0IDih8RD64jhyv87HguWtzzqs3DOIMeqGmypUkldTVYsLLLHwoDLX8YItN0+etgumN+K2rYIchcD1JaYqNdW44ZVEB1Sc9C3amhybTsdejnNbesM+QLSpt2CTh/VM4+Uffal1EX/Z9M50FJrdojPbUxH0hMUr2ggDKqmLtJfqivKWcLENd12Sf2AkNgrbAnweEsmtcHuAYWNYbnXkvCQbAC17PG6OkSPUSTNRhPUkfuOWR+oQmWIEuwN5xQ72a4+WXfYWcpgdZq9Wo1nFu1SEyR9liKkZ+ibF8L1ahJDk4dNkzyvevYYBjdi/NlDzdZAIYrjI7jkspV1gmhsTtpYMw0mDSXQR9XRk0im1EC9xxYgZ/WjJH2ztr/P8uN6oKXpHU7ZfkVxdOnK+65TaD65jKN2NJHIvs7XcvOdMjBNGn1JxQ5cbEAKka0lgRaa3qwYyEH0uWhE60lopxapJEZQt7GTGnCwEvQDy/9Ximn4OVdz89v/lelxmeMAxODc7Pe81HgwF5CvkEBfAOl6GWkc/nYnTc5Rc/Fi0CmY/cBv7D5WTuMLaYiU07Zmw== h00pz@silver-surfer

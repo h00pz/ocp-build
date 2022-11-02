@@ -1,0 +1,38 @@
+apiVersion: agent-install.openshift.io/v1beta1
+kind: NMStateConfig
+metadata:
+  name: c2
+  namespace: c2
+  labels:
+    cloud: baremetal
+    vendor: OpenShift
+    sno-cluster-c2: c2
+spec:
+  config:
+    dns:
+      config:
+        server:
+          - 172.30.23.101
+        search:
+          - h00pz.co
+    routes:
+      config:
+        - destination: 0.0.0.0/0
+          next-hop-interface: enp65s0f0
+          next-hop-address: 172.30.22.1
+    interfaces:
+      - name: enp65s0f0
+        type: ethernet
+        description: Main-NIC
+        state: up
+        ipv4:
+          enabled: true
+          dhcp: false
+          address:
+            - ip: 172.30.22.13
+              prefix-length: 24
+        ipv6:
+          enabled: false
+  interfaces:
+    - name: enp65s0f0
+      macAddress: 00:e0:ed:7e:40:2e

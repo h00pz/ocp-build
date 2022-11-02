@@ -1,4 +1,4 @@
-apiVersion: nmstate.io/v1alpha1
+apiVersion: nmstate.io/v1beta1
 kind: NodeNetworkConfigurationPolicy
 metadata:
   name: nncp-br-cnv
@@ -8,7 +8,7 @@ spec:
   desiredState:
     interfaces:
       - name: br-cnv
-        description: Linux bridge with eno1 as a port 
+        description: Linux bridge with enp65s0f1 as the port 
         type: linux-bridge
         state: up
         bridge:
@@ -16,4 +16,4 @@ spec:
             stp:
               enabled: false
           port:
-            - name: eno1
+            - name: enp65s0f1

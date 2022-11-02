@@ -1,0 +1,18 @@
+apiVersion: metal3.io/v1alpha1
+kind: BareMetalHost
+metadata:
+  name: c2
+  namespace: c2
+  annotations:
+    inspect.metal3.io: disabled
+  labels:
+    infraenvs.agent-install.openshift.io: "c2"
+spec:
+  bootMode: "legacy"
+  bmc:
+    address: yondu-ipmi.h00pz.co
+    disableCertificateVerification: true
+    credentialsName: c2-bmc-secret
+  bootMACAddress: 00:e0:ed:7e:40:2e
+  automatedCleaningMode: disabled
+  online: true

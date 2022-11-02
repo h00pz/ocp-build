@@ -12,5 +12,6 @@ spec:
     requests:
       storage: 100Gi
 # storageClassName: ocs-storagecluster-cephfs
-  storageClassName: thin
+# storageClassName: thin
+  storageClassName: nfs
   volumeMode: Filesystem

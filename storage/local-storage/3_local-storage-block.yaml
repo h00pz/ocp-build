@@ -6,6 +6,6 @@ metadata:
 spec:
   storageClassDevices:
     - devicePaths:
-        - /dev/sdb
+        - /dev/sdb2
       storageClassName: localblock
       volumeMode: Block

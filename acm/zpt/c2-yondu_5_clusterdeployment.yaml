@@ -1,0 +1,20 @@
+apiVersion: hive.openshift.io/v1
+kind: ClusterDeployment
+metadata:
+  name: c2
+  namespace: c2
+spec:
+  baseDomain: h00pz.co
+  clusterInstallRef:
+    group: extensions.hive.openshift.io
+    kind: AgentClusterInstall
+    name: c2
+    version: v1beta1
+  clusterName: c2
+  platform:
+    agentBareMetal:
+      agentSelector:
+        matchLabels:
+          cluster-name: c2
+  pullSecretRef:
+    name: assisted-deployment-pull-secret

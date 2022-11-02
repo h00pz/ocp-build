@@ -1,11 +1,29 @@
 apiVersion: k8s.cni.cncf.io/v1
 kind: NetworkAttachmentDefinition
 metadata:
-  name: nad-vlan23
+  name: nad-vlan18
   namespace: openshift-cnv
 spec:
   config: >-
-    {"name":"nad-vlan23","cniVersion":"0.3.1","plugins":[{"type":"cnv-bridge","bridge":"br-cnv","vlan":23,"ipam":{}},{"type":"cnv-tuning"}]}
+    {"name":"nad-vlan18","type":"cnv-bridge","cniVersion":"0.3.1","bridge":"br-cnv","vlan":18,"macspoofchk":true,"ipam":{}}
+---
+apiVersion: k8s.cni.cncf.io/v1
+kind: NetworkAttachmentDefinition
+metadata:
+  name: nad-vlan19
+  namespace: openshift-cnv
+spec:
+  config: >-
+    {"name":"nad-vlan19","type":"cnv-bridge","cniVersion":"0.3.1","bridge":"br-cnv","vlan":19,"macspoofchk":true,"ipam":{}}
+---
+apiVersion: k8s.cni.cncf.io/v1
+kind: NetworkAttachmentDefinition
+metadata:
+  name: nad-vlan22
+  namespace: openshift-cnv
+spec:
+  config: >-
+    {"name":"nad-vlan22","type":"cnv-bridge","cniVersion":"0.3.1","bridge":"br-cnv","vlan":22,"macspoofchk":true,"ipam":{}}
 ---
 apiVersion: k8s.cni.cncf.io/v1
 kind: NetworkAttachmentDefinition
@@ -14,16 +32,7 @@ metadata:
   namespace: openshift-cnv
 spec:
   config: >-
-    {"name":"nad-vlan24","cniVersion":"0.3.1","plugins":[{"type":"cnv-bridge","bridge":"br-cnv","vlan":24,"ipam":{}},{"type":"cnv-tuning"}]}
----
-apiVersion: k8s.cni.cncf.io/v1
-kind: NetworkAttachmentDefinition
-metadata:
-  name: nad-vlan25
-  namespace: openshift-cnv
-spec:
-  config: >-
-    {"name":"nad-vlan25","cniVersion":"0.3.1","plugins":[{"type":"cnv-bridge","bridge":"br-cnv","vlan":25,"ipam":{}},{"type":"cnv-tuning"}]}
+    {"name":"nad-vlan24","type":"cnv-bridge","cniVersion":"0.3.1","bridge":"br-cnv","vlan":24,"macspoofchk":true,"ipam":{}}
 ---
 apiVersion: k8s.cni.cncf.io/v1
 kind: NetworkAttachmentDefinition
@@ -32,4 +41,4 @@ metadata:
   namespace: openshift-cnv
 spec:
   config: >-
-    {"name":"nad-vlan26","cniVersion":"0.3.1","plugins":[{"type":"cnv-bridge","bridge":"br-cnv","vlan":26,"ipam":{}},{"type":"cnv-tuning"}]}
+    {"name":"nad-vlan26","type":"cnv-bridge","cniVersion":"0.3.1","bridge":"br-cnv","vlan":26,"macspoofchk":true,"ipam":{}}
