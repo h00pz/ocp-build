@@ -1,0 +1,33 @@
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: StorageProfile
+metadata:
+  labels:
+    app: containerized-data-importer
+    app.kubernetes.io/component: storage
+    app.kubernetes.io/managed-by: cdi-controller
+    app.kubernetes.io/part-of: hyperconverged-cluster
+    app.kubernetes.io/version: 4.11.1
+    cdi.kubevirt.io: ""
+  name: nfs
+  ownerReferences:
+  - apiVersion: cdi.kubevirt.io/v1beta1
+    blockOwnerDeletion: true
+    controller: true
+    kind: CDI
+    name: cdi-kubevirt-hyperconverged
+spec:
+  claimPropertySets:
+  - accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+status:
+  claimPropertySets:
+  - accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+  provisioner: example.com/nfs
+  storageClass: nfs

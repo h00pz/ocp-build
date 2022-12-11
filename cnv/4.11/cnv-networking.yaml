@@ -1,0 +1,29 @@
+apiVersion: nmstate.io/v1beta1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: nncp-br-cnv
+spec:
+  nodeSelector: 
+    node-role.kubernetes.io/worker: "" 
+  desiredState:
+    interfaces:
+      - name: br-cnv
+        description: Linux bridge with enp65s0f1 as the port 
+        type: linux-bridge
+        state: up
+        bridge:
+          options:
+            stp:
+              enabled: false
+          port:
+            - name: enp65s0f1
+---
+apiVersion: k8s.cni.cncf.io/v1
+kind: NetworkAttachmentDefinition
+metadata:
+  name: nad-vlan22
+  namespace: openshift-cnv
+spec:
+  config: >-
+    {"name":"nad-vlan22","type":"cnv-bridge","cniVersion":"0.3.1","bridge":"br-cnv","vlan":22,"macspoofchk":true,"ipam":{}}
+
