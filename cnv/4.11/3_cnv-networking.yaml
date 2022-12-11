@@ -26,4 +26,3 @@ metadata:
 spec:
   config: >-
     {"name":"nad-vlan22","type":"cnv-bridge","cniVersion":"0.3.1","bridge":"br-cnv","vlan":22,"macspoofchk":true,"ipam":{}}
-
