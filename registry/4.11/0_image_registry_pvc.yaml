@@ -7,11 +7,9 @@ metadata:
     imageregistry.openshift.io: 'true'
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 100Gi
-# storageClassName: ocs-storagecluster-cephfs
-# storageClassName: thin
-  storageClassName: nfs
+  storageClassName: bea
   volumeMode: Filesystem

@@ -4,6 +4,7 @@ metadata:
   name: cluster
 spec:
   managementState: Managed
+  replicas: 1
   storage:
     pvc:
-      claim: 
+      claim: image-registry-storage
