@@ -23,37 +23,3 @@ spec:
   name: kubevirt-hyperconverged
   startingCSV: kubevirt-hyperconverged-operator.v4.11.1
   channel: "stable" 
----
-apiVersion: hco.kubevirt.io/v1beta1
-kind: HyperConverged
-metadata:
-  name: kubevirt-hyperconverged
-  namespace: openshift-cnv
-  labels:
-    app: kubevirt-hyperconverged
-spec:
-  certConfig:
-    ca:
-      duration: 48h0m0s
-      renewBefore: 24h0m0s
-    server:
-      duration: 24h0m0s
-      renewBefore: 12h0m0s
-  featureGates:
-    deployTektonTaskResources: false
-    enableCommonBootImageImport: true
-    nonRoot: true
-    sriovLiveMigration: true
-    withHostPassthroughCPU: false
-  liveMigrationConfig:
-    completionTimeoutPerGiB: 800
-    parallelMigrationsPerCluster: 5
-    parallelOutboundMigrationsPerNode: 2
-    progressTimeout: 150
-  scratchSpaceStorageClass: bea
-  uninstallStrategy: BlockUninstallIfWorkloadsExist
-  workloadUpdateStrategy:
-    batchEvictionInterval: 1m0s
-    batchEvictionSize: 10
-    workloadUpdateMethods:
-      - LiveMigrate
