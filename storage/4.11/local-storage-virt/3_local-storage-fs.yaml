@@ -1,0 +1,14 @@
+apiVersion: local.storage.openshift.io/v1
+kind: LocalVolume
+metadata:
+  name: localfs
+  namespace: openshift-local-storage
+spec:
+  logLevel: Normal
+  managementState: Managed
+  storageClassDevices:
+    - devicePaths:
+        - /dev/vdb
+      fsType: xfs
+      storageClassName: localfs
+      volumeMode: Filesystem
