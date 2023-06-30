@@ -3,10 +3,10 @@ kind: TriggerAuthentication
 metadata:
   name: keda-trigger-auth-prometheus
 spec:
-  secretTargetRef: 
-  - parameter: bearerToken 
-    name: crocs-sa-token-p5798
-    key: token 
+  secretTargetRef:
+  - parameter: bearerToken
+    name: crocs-sa-token-2vjfd
+    key: token
   - parameter: ca
-    name: crocs-sa-token-p5798
+    name: crocs-sa-token-2vjfd
     key: ca.crt
