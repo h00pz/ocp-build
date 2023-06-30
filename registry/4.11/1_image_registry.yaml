@@ -8,3 +8,4 @@ spec:
   storage:
     pvc:
       claim: image-registry-storage
+  defaultRoute: true

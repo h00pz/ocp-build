@@ -1,0 +1,24 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: crocs-scaledobject
+  namespace: crocs
+spec:
+  scaleTargetRef:
+    name: crocodile-api
+    kind: Deployment
+  pollingInterval: 10
+  cooldownPeriod:  15
+  minReplicaCount: 1
+  maxReplicaCount: 10
+  triggers:
+  - type: prometheus 
+    metadata:
+      serverAddress: https://thanos-querier.openshift-monitoring.svc.cluster.local:9092 
+      metricName: crocs_access_frequency
+      namespace: crocs
+      threshold: '5'
+      query: sum(rate(node_http_requests_total[2m])) 
+      authModes: bearer
+    authenticationRef:
+      name: keda-trigger-auth-prometheus
